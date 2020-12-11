@@ -1,0 +1,39 @@
+composer update
+
+~~~~~ Auth ~~~~~
+composer require laravel/ui
+php artisan ui bootstrap --auth
+npm install && npm run dev
+
+~~~~ Roles & Permissions ~~~~
+composer require spatie/laravel-permission
+# Add provider https://spatie.be/docs/laravel-permission/v3/installation-laravel (Step 4)
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+
+# Update file config/database.php, change charset with 'utf8' and collation with 'utf8_general_ci' https://stackoverflow.com/a/49935285/12923478
+php artisan optimize:clear 
+php artisan migrate:fresh
+
+# Create and edit models, controller, migration
+php artisan make:model Example --resource --migration
+
+# Create and edit factories
+php artisan make:factory ExampleFactory --model=Example
+
+# Create and edit seeders
+php artisan make:seeder ExampleTableSeeder
+
+# Remapping new files created
+composer dump-autoload
+
+# Clean cache to migrate database again https://stackoverflow.com/a/55906872/12923478
+php artisan optimize:clear 
+php artisan migrate:fresh --seed
+
+# Create new routes from model, optional with middlewares
+
+# Create custom views to manipulate data
+
+# Resource
+# https://rimorsoft.com/roles-y-permisos-en-laravel-con-spatie-laravel-permission
+# https://github.com/rimorsoft/Tutorial-spatie-laravel-permission
