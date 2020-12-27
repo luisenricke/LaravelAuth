@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('products', ProductController::class);
+
+/*
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
 });
+*/
